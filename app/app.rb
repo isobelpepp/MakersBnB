@@ -7,7 +7,12 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/' do
-    'Hello'
+    erb :index
+  end
+
+  get '/listings' do
+    @name = params[:name]
+    "Welcome #{name}"
   end
 
   run! if app_file == $0
