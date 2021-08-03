@@ -5,6 +5,7 @@ require 'rspec'
 require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'
+require_relative 'setup_database'
 
 require File.join(File.dirname(__FILE__), '..', 'app/app.rb')
 
@@ -15,11 +16,14 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   # Want a nice code coverage website? Uncomment this next line!
   # SimpleCov::Formatter::HTMLFormatter
 ])
-SimpleCov.start do
-  add_filter "../coverage"
-end
+SimpleCov.start
 
 RSpec.configure do |config|
+
+  config.before(:each) do
+    setup_database
+  end
+
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
