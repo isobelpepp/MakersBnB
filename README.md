@@ -29,7 +29,8 @@ I would like to be able to sign up, log in and out
 
   **Extra features to add:**
     - Scramble user password for increased security ✅
-    - Hide password when typing in (with option to see it)
+    - Hide password when typing in ✅
+      - With option to veiw it
     - Don't let someone sign up if email is already in use
     - Tell user if the email is not in the system and ask them to sign up
     - Won't let user sign in if a user is already logged in
