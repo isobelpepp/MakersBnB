@@ -1,3 +1,14 @@
 <%if flash[:notice]%>
 <%= flash[:notice] %>
 <% end%>
+
+
+<% if session[:user] %>
+  <form action='/log_out' method='get'>
+    <input type='submit' value='Log Out'>
+  </form>
+  <% else %>
+    <form action='/log_in' method='get'>
+      <input type='submit' value='Log In'>
+    </form>
+<% end %>

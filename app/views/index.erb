@@ -1,5 +1,9 @@
 Makers BnB
 
+<%if flash[:notice]%>
+<%= flash[:notice] %>
+<% end%>
+
 <form action='/sign_up' method='post'>
   <input type='text' name='name' placeholder='Your name'>
   <input type='text' name='email' placeholder='Your email'>
@@ -7,6 +11,12 @@ Makers BnB
   <input type='submit' value='Sign Up'>
 </form>
 
-<form action='/log_in' method='get'>
-  <input type='submit' value='Log In'>
-</form>
+<% if session[:user] %>
+  <form action='/log_out' method='get'>
+    <input type='submit' value='Log Out'>
+  </form>
+  <% else %>
+    <form action='/log_in' method='get'>
+      <input type='submit' value='Log In'>
+    </form>
+<% end %>

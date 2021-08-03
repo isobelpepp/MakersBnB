@@ -38,9 +38,16 @@ class MakersBnB < Sinatra::Base
     redirect '/listings'
   end
 
+  get '/log_out' do
+    session.clear
+    flash[:notice] = 'You have logged out.'
+    redirect '/'
+  end
+
   get '/listings' do
     erb :'listings/index'
   end
+
 
   run! if app_file == $0
 end
