@@ -3,12 +3,14 @@ require_relative '../helpers/web_helpers.rb'
 feature 'Log in' do
   scenario 'user can log in' do
     sign_up
+    click_button('Log Out')
     log_in
     expect(current_path).to eq('/listings')
     expect(page).to have_content 'Welcome Test!'
   end
   scenario 'user cannot log in with wrong email' do
     sign_up
+    click_button('Log Out')
     visit('/log_in')
     fill_in('email', with: 'wrongtest@example.com')
     fill_in('password', with: 'Password1!')
@@ -18,6 +20,7 @@ feature 'Log in' do
   end
   scenario 'user cannot log in with wrong password' do
     sign_up
+    click_button('Log Out')
     visit('/log_in')
     fill_in('email', with: 'test@example.com')
     fill_in('password', with: 'wrongPassword1!')
