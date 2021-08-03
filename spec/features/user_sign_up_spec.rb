@@ -1,12 +1,9 @@
+require_relative '../helpers/web_helpers.rb'
+
 feature 'A user can sign up' do
   scenario 'Welcomes user on listings page once signed up' do
-    visit('/')
-    fill_in('name', with: 'Example')
-    fill_in('email', with: 'test@example.com')
-    fill_in('password', with: 'Password1!')
-    click_button('Sign In')
-
+    sign_up
     expect(current_path).to eq('/listings')
-    expect(page).to have_content 'Welcome Example!'
+    expect(page).to have_content 'Welcome Test!'
   end
 end

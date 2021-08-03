@@ -25,6 +25,19 @@ class MakersBnB < Sinatra::Base
     redirect '/listings'
   end
 
+  get '/log_in' do
+    erb :'user/log_in'
+  end
+
+  post '/log_in' do
+    unless session[:user] = User.authenticate(email: params[:email], password: params[:password])
+      flash[:notice] = "Your email and password don't match"
+      redirect '/log_in'
+    end
+    flash[:notice] = "Welcome #{session[:user].name}!"
+    redirect '/listings'
+  end
+
   get '/listings' do
     erb :'listings/index'
   end

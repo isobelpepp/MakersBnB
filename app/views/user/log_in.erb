@@ -1,0 +1,9 @@
+<% if flash[:notice] %>
+  <%= flash[:notice]%>
+<% end %>
+
+<form action='/log_in' method='post'>
+  <input type='text' name='email' placeholder='Your email'>
+  <input type='text' name='password' placeholder='Your password'>
+  <input type='submit' value='Log In'>
+</form>

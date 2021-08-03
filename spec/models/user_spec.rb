@@ -11,4 +11,23 @@ describe User do
       expect(user.user_id).to eq persisted_data[0]['user_id']
     end
   end
+
+  describe '.authenticate' do
+    it 'returns nil given the wrong password' do
+      User.create(name: 'Example', email: 'test@example.com', password: 'Password1!')
+      expect(User.authenticate(email: 'wrongemail@email.com', password: 'Password1!')).to eq nil
+    end
+    it 'returns nil given the wrong email' do
+      User.create(name: 'Example', email: 'test@example.com', password: 'Password1!')
+      expect(User.authenticate(email: 'test@example.com', password: 'wrongPassword1!')).to eq nil
+    end
+    it 'returns the user given the right email and password' do
+      user = User.create(name: 'Example', email: 'test@example.com', password: 'Password1!')
+      auth_user = User.authenticate(email: 'test@example.com', password: 'Password1!')
+
+      expect(user.name).to eq auth_user.name
+      expect(user.email).to eq auth_user.email
+      expect(auth_user.user_id).to eq user.user_id
+    end
+  end
 end
