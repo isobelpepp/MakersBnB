@@ -20,6 +20,10 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/sign_up' do
+    if User.find(email: params[:email]) == true
+      flash[:notice] = 'We already have that email in our system, please log in'
+      redirect('/')
+    end
     session[:user] = User.create(name: params[:name], email: params[:email], password: params[:password])
     flash[:notice] = "Welcome #{session[:user].name}!"
     redirect '/listings'
