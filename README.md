@@ -20,3 +20,13 @@ As a user
 So I can list/book spaces
 I would like to be able to sign up, log in and out
 ```
+
+**Criteria to meet:**
+- User can sign up and the data will persist
+- User can log in if they have signed up
+  - Will throw error if email or password do not match up
+- User can log out and the session will be cleared
+  **Extra features to add:**
+    - Scramble user password for increased security
+    - Hide password when typing in (with option to see it)
+    - Don't let someone sign up if email is already in use
