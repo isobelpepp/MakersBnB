@@ -35,8 +35,11 @@ class MakersBnB < Sinatra::Base
 
   post '/log_in' do
     user = User.authenticate(email: params[:email], password: params[:password])
-    if session[:user]
-      flash[:notice] = "Please log out before you can log in"
+    if User.find(email: params[:email]) == false
+      flash[:notice] = "We don't recognise that email, please either try again or sign up"
+      redirect '/log_in'
+    elsif session[:user]
+      flash[:notice] = 'Please log out before you can log in'
       redirect '/log_in'
     elsif user
       session[:user] = user
