@@ -12,3 +12,11 @@
       <input type='submit' value='Log In'>
     </form>
 <% end %>
+
+<form action='/listmyspace' method='get'>
+  <input type='submit' value='Add Listing'>
+</form>
+
+<% @listings.each do |listing| %>
+  <%= listing.name %>
+<% end %>

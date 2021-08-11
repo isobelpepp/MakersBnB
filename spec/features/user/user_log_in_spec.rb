@@ -1,4 +1,4 @@
-require_relative '../helpers/web_helpers.rb'
+require_relative '../../helpers/web_helpers.rb'
 
 feature 'Log in' do
   scenario 'user can log in' do

@@ -30,7 +30,27 @@ I would like to be able to sign up, log in and out
   **Extra features to add:**
     - Scramble user password for increased security ✅
     - Hide password when typing in ✅
-      - With option to view it
+      - With option to view it 🔜
     - Don't let someone sign up if email is already in use ✅
     - Tell user if the email is not in the system and ask them to either check it or sign up ✅
     - Won't let user sign in if a user is already logged in ✅
+
+```
+As a host
+So I can advertise spaces								
+I would like to post ‘spaces’ (with a name, short description and price per night)
+```
+
+**Criteria to meet:**
+- User can list a space and it will show up on listings page ✅
+- User can add name, description and price ✅
+- The listing is linked to the user ✅
+- Clicking on the listing will take you to a page with all the details on
+
+  **Extra features to add:**
+    - User can add a picture of their space
+    - User has to fill in all the fields when listing a space
+    - A user can take down a listing
+
+
+

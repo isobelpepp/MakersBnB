@@ -3,6 +3,7 @@ require 'sinatra/reloader'
 require 'sinatra/flash'
 require 'pg'
 require_relative './lib/user.rb'
+require_relative './lib/listing.rb'
 require_relative 'setup_database_connection.rb'
 
 
@@ -55,9 +56,24 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/listings' do
+    @listings = Listing.all
     erb :'listings/index'
   end
 
+  post '/listings' do
+    Listing.create(name: params[:name], description: params[:description],
+                   price: params[:price], user_id: session[:user].user_id)
+    redirect '/listings'
+  end
+
+  get '/listmyspace' do
+    unless session[:user]
+      flash[:notice] = 'You must be logged in to do that.'
+      redirect '/log_in'
+    end
+
+    erb :'listings/list_my_space'
+  end
 
   run! if app_file == $0
 end

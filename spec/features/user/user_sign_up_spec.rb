@@ -1,4 +1,4 @@
-require_relative '../helpers/web_helpers.rb'
+require_relative '../../helpers/web_helpers.rb'
 
 feature 'A user can sign up' do
   scenario 'Welcomes user on listings page once signed up' do
