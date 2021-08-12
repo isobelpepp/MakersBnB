@@ -29,12 +29,25 @@ class Listing
     result = DatabaseConnection.query("SELECT * FROM listings;")
     result.map do |listing| 
       Listing.new(
-      listing_id: listing['listing_id'],
-      name: listing['name'],
-      description: listing['description'],
-      price: listing['price'],
-      user_id: listing['user_id']
+        listing_id: listing['listing_id'],
+        name: listing['name'],
+        description: listing['description'],
+        price: listing['price'],
+        user_id: listing['user_id']
       )
     end
+  end
+
+  def self.find(listing_id:)
+    result = DatabaseConnection.query("SELECT * FROM listings WHERE listing_id =
+                                      #{listing_id}")
+    Listing.new(
+      listing_id: result[0]['listing_id'],
+      name: result[0]['name'],
+      description: result[0]['description'],
+      price: result[0]['price'],
+      user_id: result[0]['user_id']
+      )
+
   end
 end

@@ -30,5 +30,15 @@ describe Listing do
       expect(listing.listing_id).to eq persisted_data[0]['listing_id']
     end
   end
+
+  describe 'find' do
+    it 'finds a listing given the listing id' do
+      listing = Listing.create(name: 'Izzys Igloo', description: 'Cold and icy', price: 10, user_id: new_user.user_id)
+      find_listing = Listing.find(listing_id: listing.listing_id)
+      expect(find_listing.name).to eq('Izzys Igloo')
+      expect(find_listing.description).to eq('Cold and icy')
+      expect(find_listing.price).to eq('10')
+    end
+  end
   
 end

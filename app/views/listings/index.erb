@@ -15,8 +15,15 @@
 
 <form action='/listmyspace' method='get'>
   <input type='submit' value='Add Listing'>
-</form>
+</form> 
 
+<ul>
+<li class='listings'>
 <% @listings.each do |listing| %>
   <%= listing.name %>
+    <form action='listings/<%=listing.listing_id%>' method='get'>
+    <input type='submit' value='View Listing' class='button'/>
+    </form>
 <% end %>
+</li>
+</ul>

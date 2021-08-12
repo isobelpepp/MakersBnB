@@ -75,5 +75,10 @@ class MakersBnB < Sinatra::Base
     erb :'listings/list_my_space'
   end
 
+  get '/listings/:listing_id' do
+    @listing = Listing.find(listing_id: params[:listing_id])
+    erb :'listings/book'
+  end
+
   run! if app_file == $0
 end
