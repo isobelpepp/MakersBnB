@@ -36,14 +36,14 @@ class MakersBnB < Sinatra::Base
 
   post '/log_in' do
     user = User.authenticate(email: params[:email], password: params[:password])
-    if User.find(email: params[:email]) == false
-      flash[:notice] = "We don't recognise that email, please either try again or sign up"
-      redirect '/log_in'
-    elsif session[:user]
+    if session[:user]
       flash[:notice] = 'Please log out before you can log in'
       redirect '/log_in'
     elsif user
       session[:user] = user
+    else 
+      flash[:notice] = "Something is wrong with your email or password, please either try again or sign up"
+      redirect '/log_in'
     end
     flash[:notice] = "Welcome #{session[:user].name}!"
     redirect '/listings'
@@ -78,6 +78,16 @@ class MakersBnB < Sinatra::Base
   get '/listings/:listing_id' do
     @listing = Listing.find(listing_id: params[:listing_id])
     erb :'listings/book'
+  end
+
+  post '/book/:listing_id' do
+    Booking.create(start_date: params[:start_date], end_date: params[:end_date],
+                  user_id: session[:user].user_id, listing_is: params[:listing_id])
+    redirect "/user/#{session[:user].user_id}"
+  end
+
+  get '/user/:user_id' do
+    erb :'user/profile'
   end
 
   run! if app_file == $0

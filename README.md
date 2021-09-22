@@ -45,12 +45,23 @@ I would like to post ‘spaces’ (with a name, short description and price per 
 - User can list a space and it will show up on listings page ✅
 - User can add name, description and price ✅
 - The listing is linked to the user ✅
-- Clicking on the listing will take you to a page with all the details on
+- Clicking on the listing will take you to a page with all the details on ✅
 
   **Extra features to add:**
     - User can add a picture of their space
     - User has to fill in all the fields when listing a space
-    - A user can take down a listing
+    - A user can remove a listing
 
+
+```
+As a guest
+So I can book a place
+I would like to request it for some given dates
+```
+
+**Criteria to meet**
+- A user can click on 'request to book' and fill in some dates
+- Users can visit their profile and it will tell them what they have requested to book, the dates and whether it is 
+confirmed or not
 
 

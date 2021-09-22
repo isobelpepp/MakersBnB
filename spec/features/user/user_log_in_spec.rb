@@ -16,7 +16,7 @@ feature 'Log in' do
     fill_in('password', with: 'wrongPassword1!')
     click_button('Log In')
     expect(current_path).to eq('/log_in')
-    expect(page).to have_content "Your password doesn't match your email"
+    expect(page).to have_content "Something is wrong with your email or password, please either try again or sign up"
   end
   scenario "doesn't let user sign in if someone is logged in" do
     sign_up
@@ -27,7 +27,7 @@ feature 'Log in' do
   end
   scenario 'tells user if email is not in system and asks them to sign up' do
     log_in
-    expect(page).to have_content("We don't recognise that email, please either try again or sign up")
+    expect(page).to have_content("Something is wrong with your email or password, please either try again or sign up")
   end
   scenario "user can't log in with wrong email" do
     sign_up
@@ -37,6 +37,6 @@ feature 'Log in' do
     fill_in('password', with: 'Password1!')
     click_button('Log In')
     expect(current_path).to eq('/log_in')
-    expect(page).to have_content("We don't recognise that email, please either try again or sign up")
+    expect(page).to have_content("Something is wrong with your email or password, please either try again or sign up")
   end
 end
